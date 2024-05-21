@@ -5,8 +5,8 @@ export function Header() {
     <header className="main-header container container-lg">
       <nav className="navbar">
         <ul className="navbar-nav">
-          <li>
-            <a href="#">
+          <li className="nav-item">
+            <a href="#" className="nav-link">
               <div className="dropdown">
                 <button>Dropdown Js</button>
                 <div className="dropdown-menu"></div>
