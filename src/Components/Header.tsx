@@ -8,7 +8,7 @@ export function Header() {
           <li className="nav-item">
             <a href="#" className="nav-link">
               <div className="dropdown">
-                <button>Dropdown Js</button>
+                <button className="dropdown-button btn">Dropdown Js</button>
                 <div className="dropdown-menu"></div>
               </div>
             </a>
