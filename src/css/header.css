@@ -1,0 +1,13 @@
+.main-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px 5px rgba(0, 0, 0, 0.1);
+  height: var(--header-height);
+  display: flex;
+  justify-content: cente;
+  align-items: center;
+}
+
+.main-header .navbar,
+.main-header .navbar-nav {
+  width: 100%;
+}

@@ -1,10 +1,10 @@
-import { InformationForm } from "./Components/InformationForm";
+import { Header } from "./Components/Header";
 import "./css/main.css";
 
 function App() {
   return (
     <>
-      <InformationForm />
+      <Header />
     </>
   );
 }
