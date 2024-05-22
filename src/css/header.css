@@ -23,14 +23,15 @@
   transition: color var(--transition-speed) ease-in-out;
 }
 
-.main-header .nav-link:hover {
-  color: var(--link-color-hover);
-}
-
 .main-header [data-dropdown] {
   position: relative;
   display: flex;
   align-items: center;
+}
+
+.main-header [data-dropdown-button]:hover,
+.main-header [data-dropdown].active [data-dropdown-button] {
+  color: var(--link-color-hover);
 }
 
 .main-header [data-dropdown-button] + [data-dropdown-menu] {
