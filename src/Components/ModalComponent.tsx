@@ -1,6 +1,9 @@
-import { TModalActiveState } from "../types";
+import { useState } from "react";
+import { TModalActiveState, TPhoneInput } from "../types";
 import { useMenus } from "./Providers/MenuProvider";
 import { TextInput } from "./TextInput";
+import { useUserInformationHandler } from "./Providers/UserInformationProvider";
+import { PhoneInput } from "./PhoneInput";
 
 export const ModalComponent = ({
   dataName,
@@ -10,10 +13,29 @@ export const ModalComponent = ({
   stateToCheck: TModalActiveState;
 }) => {
   const { modalActiveState, setModalActiveState } = useMenus();
+  const { setUserInformation } = useUserInformationHandler();
+
   const checkIfStateIsActive = (stateToCheck: TModalActiveState) =>
     stateToCheck === modalActiveState ? "active" : "";
+
+  const [usernameInput, setUsernameInput] = useState("");
+  const [passwordInput, setPasswordInput] = useState("");
+  const [cityInput, setCityInput] = useState("");
+  const [emailInput, setEmailInput] = useState("");
+  const [phoneInput, setPhoneInput] = useState<TPhoneInput>(["", "", ""]);
+
   return (
     <div
+      onSubmit={(e) => {
+        e.preventDefault();
+        setUserInformation({
+          username: usernameInput,
+          password: passwordInput,
+          city: cityInput,
+          email: emailInput,
+          phoneInput: phoneInput,
+        });
+      }}
       onClick={(e) => {
         const target = e.target as HTMLDivElement;
         if (target.matches("[data-modal]")) setModalActiveState("none");
@@ -30,6 +52,8 @@ export const ModalComponent = ({
             type: "text",
             name: "username",
             id: "username",
+            value: usernameInput,
+            onChange: (e) => setUsernameInput(e.target.value),
           }}
         />
         <TextInput
@@ -39,6 +63,8 @@ export const ModalComponent = ({
             type: "password",
             name: "password",
             id: "password",
+            value: passwordInput,
+            onChange: (e) => setPasswordInput(e.target.value),
           }}
         />
         <TextInput
@@ -48,37 +74,23 @@ export const ModalComponent = ({
             type: "text",
             name: "city",
             id: "city",
+            list: "cities",
+            value: cityInput,
+            onChange: (e) => setCityInput(e.target.value),
           }}
         />
-        <div className="phone-input-container">
-          <div>Phone #</div>
-          <TextInput
-            labelText=""
-            inputProps={{
-              placeholder: "111",
-              type: "text",
-              name: "phone",
-            }}
-          />
-          -
-          <TextInput
-            labelText=""
-            inputProps={{
-              placeholder: "111",
-              type: "text",
-              name: "phone",
-            }}
-          />
-          -
-          <TextInput
-            labelText=""
-            inputProps={{
-              placeholder: "1111",
-              type: "text",
-              name: "phone",
-            }}
-          />
-        </div>
+        <TextInput
+          labelText="Email"
+          inputProps={{
+            placeholder: "email",
+            type: "text",
+            name: "email",
+            id: "email",
+            value: emailInput,
+            onChange: (e) => setEmailInput(e.target.value),
+          }}
+        />
+        <PhoneInput phoneInput={phoneInput} setPhoneInput={setPhoneInput} />
         <TextInput
           labelText=""
           inputProps={{

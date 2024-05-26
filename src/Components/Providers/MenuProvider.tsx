@@ -10,7 +10,7 @@ type TMenuProvider = {
 
 const MenuContext = createContext({} as TMenuProvider);
 
-export const DropdownMenuProvider = ({ children }: { children: ReactNode }) => {
+export const MenuProvider = ({ children }: { children: ReactNode }) => {
   const [dropdownMenuState, setDropdownMenuState] =
     useState<TDropdownMenuState>("none");
   const [modalActiveState, setModalActiveState] =
