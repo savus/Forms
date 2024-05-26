@@ -12,12 +12,19 @@ export function Header() {
         <header className="main-header container container-lg">
           <Navbar>
             <Navitem buttonText="Dropdown Js" customClassname="dropdown-js">
-              <ModalLink linkText="Modal Registration JS" />
+              <ModalLink
+                linkText="Modal Registration JS"
+                stateToSet="registration-form"
+                dataModalLink="registration"
+              />
             </Navitem>
           </Navbar>
         </header>
 
-        <ModalComponent dataName="registration" />
+        <ModalComponent
+          dataName="registration"
+          stateToCheck="registration-form"
+        />
       </DropdownMenuProvider>
     </>
   );

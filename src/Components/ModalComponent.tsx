@@ -1,18 +1,24 @@
+import { TModalActiveState } from "../types";
 import { useMenus } from "./Providers/MenuProvider";
 import { TextInput } from "./TextInput";
 
-export const ModalComponent = ({ dataName }: { dataName: string }) => {
+export const ModalComponent = ({
+  dataName,
+  stateToCheck,
+}: {
+  dataName: string;
+  stateToCheck: TModalActiveState;
+}) => {
   const { modalActiveState, setModalActiveState } = useMenus();
-  const checkIfStateIsActive = (stateToCheck: string) =>
+  const checkIfStateIsActive = (stateToCheck: TModalActiveState) =>
     stateToCheck === modalActiveState ? "active" : "";
   return (
     <div
-      onClick={() => {
-        setModalActiveState("none");
+      onClick={(e) => {
+        const target = e.target as HTMLDivElement;
+        if (target.matches("[data-modal]")) setModalActiveState("none");
       }}
-      className={`${dataName}-modal ${checkIfStateIsActive(
-        "registration-form"
-      )}`}
+      className={`${dataName}-modal ${checkIfStateIsActive(stateToCheck)}`}
       data-modal={dataName}
     >
       <form action="#" className="registration-form modal-body">

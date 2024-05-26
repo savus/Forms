@@ -1,12 +1,24 @@
+import { TModalActiveState } from "../types";
 import { useMenus } from "./Providers/MenuProvider";
 
-export const ModalLink = ({ linkText }: { linkText: string }) => {
-  const { setModalActiveState } = useMenus();
+export const ModalLink = ({
+  linkText,
+  stateToSet,
+  dataModalLink,
+}: {
+  linkText: string;
+  stateToSet: TModalActiveState;
+  dataModalLink: string;
+}) => {
+  const { setModalActiveState, setDropdownMenuState } = useMenus();
   return (
     <div
-      onClick={() => setModalActiveState("registration-form")}
+      onClick={() => {
+        setModalActiveState(stateToSet);
+        setDropdownMenuState("none");
+      }}
       className="modal-link"
-      data-modal-link="registration"
+      data-modal-link={dataModalLink}
     >
       {linkText}
     </div>
