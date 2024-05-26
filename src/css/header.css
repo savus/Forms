@@ -14,7 +14,8 @@
 
 .main-header .nav-item,
 .main-header .nav-item > .nav-link,
-.main-header .nav-item > .nav-link .dropdown {
+.main-header .nav-item > .nav-link .dropdown,
+.main-header [data-dropdown-button] {
   height: 100%;
 }
 
@@ -25,6 +26,11 @@
 
 .main-header [data-dropdown] {
   position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.main-header [data-dropdown-button] {
   display: flex;
   align-items: center;
 }
@@ -56,7 +62,7 @@
   pointer-events: auto;
 }
 
-.main-header [data-dropdown-menu] .menu-link {
+.main-header [data-dropdown-menu] .modal-link {
   color: var(--link-color);
   padding: 0.5rem 0.8rem;
   transition: background-color var(--transition-speed) ease-in-out;
@@ -64,6 +70,6 @@
   cursor: pointer;
 }
 
-.main-header [data-dropdown-menu] .menu-link:hover {
+.main-header [data-dropdown-menu] .modal-link:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }

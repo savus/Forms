@@ -1,13 +1,21 @@
-export function Navitem() {
+import { ReactNode } from "react";
+
+export function Navitem({
+  buttonText,
+  children,
+}: {
+  buttonText: string;
+  children: ReactNode;
+}) {
   return (
     <li className="nav-item">
       <a href="#" className="nav-link">
         <div className="dropdown" data-dropdown>
           <button className="dropdown-button btn" data-dropdown-button>
-            Dropdown Js
+            {buttonText}
           </button>
           <div className="dropdown-menu" data-dropdown-menu>
-            <div className="menu-link">Login Modal Js</div>
+            {children}
           </div>
         </div>
       </a>

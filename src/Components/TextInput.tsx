@@ -8,13 +8,11 @@ export const TextInput = ({
   inputProps: TInputProps;
 }) => {
   return (
-    <div className="input-container">
-      <label htmlFor={labelText.toLowerCase()}>{labelText}</label>
-      <input
-        id={labelText.toLowerCase()}
-        name={labelText.toLowerCase()}
-        {...inputProps}
-      />
+    <div className="text-input">
+      {labelText != "" && (
+        <label htmlFor={labelText.toLowerCase()}>{labelText}</label>
+      )}
+      <input {...inputProps} />
     </div>
   );
 };

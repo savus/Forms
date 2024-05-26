@@ -54,3 +54,58 @@ a {
 .container-lg {
   max-width: 1240px;
 }
+
+/* input fields */
+
+.text-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.text-input input {
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  box-shadow: 1px 1px 1px 1px inset rgba(0, 0, 0, 0.1);
+  padding: 0.6rem;
+}
+
+/* Modals */
+
+[data-modal] {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.2);
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+[data-modal] .modal-body {
+  padding: 1rem;
+  background-color: var(--modal-bg);
+  color: var(--text-color);
+  width: 672px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+[data-modal] .modal-body .text-input {
+  width: 80%;
+}
+
+[data-modal] .phone-input-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+[data-modal] .phone-input-container .text-input {
+  width: 80px;
+}
