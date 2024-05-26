@@ -1,18 +1,23 @@
 import { ReactNode, createContext, useContext, useState } from "react";
-import { TDropdownMenuState } from "../../types";
+import { TModalActiveState, TDropdownMenuState } from "../../types";
 
-type TDropdownMenuProvider = {
+type TMenuProvider = {
   dropdownMenuState: TDropdownMenuState;
   setDropdownMenuState: (dropdownMenuState: TDropdownMenuState) => void;
+  modalActiveState: TModalActiveState;
+  setModalActiveState: (activeModalState: TModalActiveState) => void;
 };
 
-const DropdownMenuContext = createContext({} as TDropdownMenuProvider);
+const MenuContext = createContext({} as TMenuProvider);
 
 export const DropdownMenuProvider = ({ children }: { children: ReactNode }) => {
   const [dropdownMenuState, setDropdownMenuState] =
     useState<TDropdownMenuState>("none");
+  const [modalActiveState, setModalActiveState] =
+    useState<TModalActiveState>("none");
   return (
     <div
+      className="page-container"
       onClick={(e) => {
         const target = e.target as HTMLButtonElement;
         const isDropdownButton = target.matches("[data-dropdown-button]");
@@ -22,13 +27,18 @@ export const DropdownMenuProvider = ({ children }: { children: ReactNode }) => {
         if (dropdownMenuState != "none") setDropdownMenuState("none");
       }}
     >
-      <DropdownMenuContext.Provider
-        value={{ dropdownMenuState, setDropdownMenuState }}
+      <MenuContext.Provider
+        value={{
+          dropdownMenuState,
+          setDropdownMenuState,
+          modalActiveState,
+          setModalActiveState,
+        }}
       >
         {children}
-      </DropdownMenuContext.Provider>
+      </MenuContext.Provider>
     </div>
   );
 };
 
-export const useDropdownMenus = () => useContext(DropdownMenuContext);
+export const useMenus = () => useContext(MenuContext);

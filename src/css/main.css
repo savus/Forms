@@ -55,6 +55,10 @@ a {
   max-width: 1240px;
 }
 
+.page-container {
+  height: 100vh;
+}
+
 /* input fields */
 
 .text-input {

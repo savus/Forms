@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { useDropdownMenus } from "./Providers/DropdownMenuProvider";
+import { useMenus } from "./Providers/MenuProvider";
 
 export function Navitem({
   customClassname,
@@ -10,7 +10,7 @@ export function Navitem({
   buttonText: string;
   children: ReactNode;
 }) {
-  const { dropdownMenuState, setDropdownMenuState } = useDropdownMenus();
+  const { dropdownMenuState, setDropdownMenuState } = useMenus();
   const checkIfStateIsActive = (state: string) =>
     dropdownMenuState === state ? "active" : "";
   return (

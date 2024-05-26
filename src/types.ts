@@ -4,4 +4,4 @@ export type TInputProps = ComponentProps<"input">;
 
 export type TDropdownMenuState = "none" | "registration-menu";
 
-export type TActiveModalState = "none" | "registration-form";
+export type TModalActiveState = "none" | "registration-form";
