@@ -1,14 +1,16 @@
 import { ReactNode } from "react";
 
 export function Navitem({
+  customClassname,
   buttonText,
   children,
 }: {
+  customClassname: string;
   buttonText: string;
   children: ReactNode;
 }) {
   return (
-    <li className="nav-item">
+    <li className={`nav-item ${customClassname}`}>
       <a href="#" className="nav-link">
         <div className="dropdown" data-dropdown>
           <button className="dropdown-button btn" data-dropdown-button>

@@ -83,6 +83,15 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility var(--transition-speed) ease-in-out,
+    opacity var(--transition-speed) ease-in-out;
+}
+
+[data-modal].active {
+  opacity: 1;
+  visibility: visible;
 }
 
 [data-modal] .modal-body {
@@ -94,6 +103,16 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transform: translateY(-20px);
+  opacity: 0;
+  transition-delay: 300ms;
+  transition: opacity var(--transition-speed) ease-in-out,
+    transform var(--transition-speed) ease-in-out;
+}
+
+[data-modal].active .modal-body {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 [data-modal] .modal-body .text-input {

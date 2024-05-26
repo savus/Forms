@@ -8,7 +8,7 @@ export function Header() {
     <>
       <header className="main-header container container-lg">
         <Navbar>
-          <Navitem buttonText="Dropdown Js">
+          <Navitem buttonText="Dropdown Js" customClassname="dropdown-js">
             <div className="modal-link" data-modal-link="registration">
               Login Modal Js
             </div>
