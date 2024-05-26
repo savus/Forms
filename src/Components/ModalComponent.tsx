@@ -21,7 +21,7 @@ export const ModalComponent = ({
       className={`${dataName}-modal ${checkIfStateIsActive(stateToCheck)}`}
       data-modal={dataName}
     >
-      <form action="#" className="registration-form modal-body">
+      <form action="#" className={`${stateToCheck} modal-body`}>
         <h4 className="form-header">Registration Form JS</h4>
         <TextInput
           labelText="Username"
@@ -79,6 +79,14 @@ export const ModalComponent = ({
             }}
           />
         </div>
+        <TextInput
+          labelText=""
+          inputProps={{
+            type: "submit",
+            placeholder: "Submit",
+            value: "Submit",
+          }}
+        />
       </form>
     </div>
   );
