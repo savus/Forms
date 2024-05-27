@@ -3,6 +3,8 @@ import { TModalActiveState, TPhoneInput } from "../types";
 import { useMenus } from "./Providers/MenuProvider";
 import { TextInput } from "./TextInput";
 import { PhoneInput } from "./PhoneInput";
+import { useUsers } from "./Providers/UserProvider";
+import toast from "react-hot-toast";
 
 export const ModalComponent = ({
   dataName,
@@ -12,6 +14,7 @@ export const ModalComponent = ({
   stateToCheck: TModalActiveState;
 }) => {
   const { modalActiveState, setModalActiveState } = useMenus();
+  const { registerNewUser } = useUsers();
 
   const checkIfStateIsActive = (stateToCheck: TModalActiveState) =>
     stateToCheck === modalActiveState ? "active" : "";
@@ -22,10 +25,29 @@ export const ModalComponent = ({
   const [emailInput, setEmailInput] = useState("");
   const [phoneInput, setPhoneInput] = useState<TPhoneInput>(["", "", ""]);
 
+  const resetValues = () => {
+    setUsernameInput("");
+    setPasswordInput("");
+    setCityInput("");
+    setEmailInput("");
+    setPhoneInput(["", "", ""]);
+  };
+
   return (
     <div
       onSubmit={(e) => {
         e.preventDefault();
+        setModalActiveState("none");
+        registerNewUser({
+          username: usernameInput,
+          password: passwordInput,
+          email: emailInput,
+          city: cityInput,
+          phoneNumber: phoneInput.join("-"),
+          isAdmin: false,
+        })
+          .catch((e) => toast.error(e))
+          .finally(resetValues);
       }}
       onClick={(e) => {
         const target = e.target as HTMLDivElement;
