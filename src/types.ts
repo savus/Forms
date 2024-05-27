@@ -15,3 +15,13 @@ export type TUserInformation = {
   email: string;
   phoneInput: TPhoneInput;
 };
+
+export type TUser = {
+  id: number;
+  username: string;
+  password: string;
+  city: string;
+  email: string;
+  phoneNumber: string;
+  isAdmin: boolean;
+};

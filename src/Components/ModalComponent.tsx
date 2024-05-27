@@ -2,7 +2,6 @@ import { useState } from "react";
 import { TModalActiveState, TPhoneInput } from "../types";
 import { useMenus } from "./Providers/MenuProvider";
 import { TextInput } from "./TextInput";
-import { useUserInformationHandler } from "./Providers/UserInformationProvider";
 import { PhoneInput } from "./PhoneInput";
 
 export const ModalComponent = ({
@@ -13,7 +12,6 @@ export const ModalComponent = ({
   stateToCheck: TModalActiveState;
 }) => {
   const { modalActiveState, setModalActiveState } = useMenus();
-  const { setUserInformation } = useUserInformationHandler();
 
   const checkIfStateIsActive = (stateToCheck: TModalActiveState) =>
     stateToCheck === modalActiveState ? "active" : "";
@@ -28,13 +26,6 @@ export const ModalComponent = ({
     <div
       onSubmit={(e) => {
         e.preventDefault();
-        setUserInformation({
-          username: usernameInput,
-          password: passwordInput,
-          city: cityInput,
-          email: emailInput,
-          phoneInput: phoneInput,
-        });
       }}
       onClick={(e) => {
         const target = e.target as HTMLDivElement;

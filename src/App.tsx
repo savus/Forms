@@ -2,6 +2,7 @@ import { Header } from "./Components/Header";
 import { ModalComponent } from "./Components/ModalComponent";
 import { MenuProvider } from "./Components/Providers/MenuProvider";
 import { UserInformationHandler } from "./Components/Providers/UserInformationProvider";
+import { UserProvider } from "./Components/Providers/UserProvider";
 import { UserInformationDisplay } from "./Components/UserInformationDisplay";
 import "./css/main.css";
 import "./css/theme.css";
@@ -11,14 +12,14 @@ function App() {
   return (
     <>
       <MenuProvider>
-        <UserInformationHandler>
-          <Header />
+        <Header />
+        <UserProvider>
           <ModalComponent
             dataName="registration"
             stateToCheck="registration-form"
           />
           <UserInformationDisplay />
-        </UserInformationHandler>
+        </UserProvider>
       </MenuProvider>
       <datalist id="cities">
         {allCities.map((city) => (

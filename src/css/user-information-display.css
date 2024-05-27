@@ -1,0 +1,19 @@
+.user-information-display {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-information-display .section-header {
+  text-decoration: underline;
+}
+
+.user-information-display .button-group {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem;
+  gap: 20px;
+}
+
+.user-information-display .button-group button {
+  padding: 0.5rem;
+}
