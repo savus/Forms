@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "username": "John",
+      "password": "password",
+      "city": "Hobbiton",
+      "email": "email@aol.com",
+      "phoneNumber": "111-111-1111"
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import { useUserInformationHandler } from "./Providers/UserInformationProvider";
 export const UserInformationDisplay = () => {
   const { userInformation } = useUserInformationHandler();
   return (
-    <div>
+    <div className="user-information-display">
       {!userInformation ? (
         <div>No Information given</div>
       ) : (
@@ -15,6 +15,7 @@ export const UserInformationDisplay = () => {
           <div>Phone #: {userInformation?.phoneInput}</div>
         </div>
       )}
+      <div className="registered-user-list"></div>
     </div>
   );
 };
