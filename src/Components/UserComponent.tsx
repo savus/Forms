@@ -1,10 +1,12 @@
 import { TUser } from "../types";
+import { useUsers } from "./Providers/UserProvider";
 
 export const UserComponent = ({
   user: { id, username, password, city, email, phoneNumber, isAdmin },
 }: {
   user: TUser;
 }) => {
+  const { patchUserAdminRole, removeUser } = useUsers();
   return (
     <div>
       <div>id: {id}</div>
@@ -15,10 +17,15 @@ export const UserComponent = ({
       <div>phone number: {phoneNumber}</div>
       <div>Admin: {isAdmin ? "True" : "False"}</div>
       <div className="button-group">
-        <button className="toggle-role-button">
+        <button
+          className="toggle-role-button"
+          onClick={() => patchUserAdminRole({ id: id, isAdmin: !isAdmin })}
+        >
           {isAdmin ? "Remove Admin Status" : "Give Admin Status"}
         </button>
-        <button className="remove-user-button">Remove User</button>
+        <button className="remove-user-button" onClick={() => removeUser(id)}>
+          Remove User
+        </button>
       </div>
     </div>
   );
