@@ -8,6 +8,24 @@
       "email": "email@aol.com",
       "phoneNumber": "111-111-1111",
       "isAdmin": false
+    },
+    {
+      "username": "justin",
+      "password": "password",
+      "email": "",
+      "city": "Minas Tirith",
+      "phoneNumber": "--",
+      "isAdmin": false,
+      "id": 1
+    },
+    {
+      "username": "justin",
+      "password": "password",
+      "email": "justin@gmail.com",
+      "city": "Annúminas",
+      "phoneNumber": "111-111-1111",
+      "isAdmin": false,
+      "id": 2
     }
   ]
 }

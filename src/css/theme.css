@@ -3,4 +3,5 @@
   --link-color: #000;
   --link-color-hover: rgb(0, 140, 255);
   --modal-bg: #fff;
+  --error-message-text: red;
 }
