@@ -1,18 +1,18 @@
 import { TUser } from "./types";
 
 const BASE_URL = "http://localhost:3000";
-const users = "users";
+const usersEndpoint = "users";
 
 const getAllUsers = (): Promise<TUser[]> =>
-  fetch(`${BASE_URL}/${users}`).then((response) => {
+  fetch(`${BASE_URL}/${usersEndpoint}`).then((response) => {
     if (!response.ok) {
-      throw new Error(`Could not fetch data from ${users}`);
+      throw new Error(`Could not fetch ${usersEndpoint} data`);
     }
     return response.json();
   });
 
 const registerNewUser = (body: Omit<TUser, "id">): Promise<TUser[]> =>
-  fetch(`${BASE_URL}/${users}`, {
+  fetch(`${BASE_URL}/${usersEndpoint}`, {
     method: "POST",
     body: JSON.stringify(body),
     headers: { "Content-Type": "application/json" },
@@ -23,24 +23,24 @@ const registerNewUser = (body: Omit<TUser, "id">): Promise<TUser[]> =>
     return response.json();
   });
 
+const removeUser = (id: number): Promise<TUser[]> =>
+  fetch(`${BASE_URL}/${usersEndpoint}/${id}`, {
+    method: "DELETE",
+  }).then((response) => {
+    if (!response.ok) {
+      throw new Error(`Could not delete user ${id}`);
+    }
+    return response.json();
+  });
+
 const patchUserAdminRole = (body: Partial<TUser>): Promise<TUser[]> =>
-  fetch(`${BASE_URL}/${users}/${body.id}`, {
+  fetch(`${BASE_URL}/${usersEndpoint}/${body.id}`, {
     method: "PATCH",
     body: JSON.stringify(body),
     headers: { "Content-Type": "application/json" },
   }).then((response) => {
     if (!response.ok) {
-      throw new Error(`Could not update user ${body.id}`);
-    }
-    return response.json();
-  });
-
-const removeUser = (id: number): Promise<TUser[]> =>
-  fetch(`${BASE_URL}/${users}/${id}`, {
-    method: "DELETE",
-  }).then((response) => {
-    if (!response.ok) {
-      throw new Error(`Could not remove user ${id}`);
+      throw new Error(`Could not patch user ${body.id}`);
     }
     return response.json();
   });

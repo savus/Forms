@@ -3,11 +3,11 @@ import { TModalActiveState, TPhoneInput } from "../types";
 import { useMenus } from "./Providers/MenuProvider";
 import { TextInput } from "./TextInput";
 import { PhoneInput } from "./PhoneInput";
-import { useUsers } from "./Providers/UserProvider";
-import toast from "react-hot-toast";
 import { ErrorMessage } from "./ErrorMessage";
 import { isCityValid, isTextInputValidLength } from "../validations";
 import { allCities } from "../utilities/all-cities";
+import { useUserProvider } from "./Providers/UserProvider";
+import toast from "react-hot-toast";
 
 const usernameErrorMessage = "Username must be more than 2 characters";
 const passwordErrorMessage = "Password must be more than 2 characters";
@@ -21,7 +21,6 @@ export const ModalComponent = ({
   stateToCheck: TModalActiveState;
 }) => {
   const { modalActiveState, setModalActiveState } = useMenus();
-  const { registerNewUser } = useUsers();
 
   const [usernameInput, setUsernameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
@@ -39,6 +38,8 @@ export const ModalComponent = ({
   const showCityError = isSubmitted && !cityIsValid;
 
   const doBadInputsExist = !usernameIsValid || !passwordIsValid || !cityIsValid;
+
+  const { registerNewUser } = useUserProvider();
 
   const checkIfStateIsActive = (stateToCheck: TModalActiveState) =>
     stateToCheck === modalActiveState ? "active" : "";
@@ -62,11 +63,13 @@ export const ModalComponent = ({
             username: usernameInput,
             password: passwordInput,
             email: emailInput,
+            isAdmin: false,
             city: cityInput,
             phoneNumber: phoneInput.join("-"),
-            isAdmin: false,
           })
-            .catch((e) => toast.error(e))
+            .catch((e) => {
+              toast.error(e);
+            })
             .finally(resetValues);
         }
       }}

@@ -1,11 +1,11 @@
 import { useUserInformationHandler } from "./Providers/UserInformationProvider";
-import { useUsers } from "./Providers/UserProvider";
 import "../css/user-information-display.css";
+import { useUserProvider } from "./Providers/UserProvider";
 import { UserComponent } from "./UserComponent";
 
 export const UserInformationDisplay = () => {
   const { userInformation } = useUserInformationHandler();
-  const { allUsers } = useUsers();
+  const { allUsers } = useUserProvider();
   return (
     <section className="user-information-display container container-lg">
       <div>
@@ -24,7 +24,7 @@ export const UserInformationDisplay = () => {
       </div>
       <div className="registered-user-list">
         {allUsers.map((user) => (
-          <UserComponent key={user.id} user={user} />
+          <UserComponent user={user} key={user.id} />
         ))}
       </div>
     </section>

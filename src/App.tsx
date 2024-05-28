@@ -1,7 +1,6 @@
 import { Header } from "./Components/Header";
 import { ModalComponent } from "./Components/ModalComponent";
 import { MenuProvider } from "./Components/Providers/MenuProvider";
-import { UserInformationHandler } from "./Components/Providers/UserInformationProvider";
 import { UserProvider } from "./Components/Providers/UserProvider";
 import { UserInformationDisplay } from "./Components/UserInformationDisplay";
 import "./css/main.css";
