@@ -1,22 +1,49 @@
 {
   "users": [
     {
+      "id": "b610c740-2183-11ef-9195-47eceacf7ccf",
       "username": "justin",
       "password": "password",
-      "email": "justin@gmail.com",
-      "city": "Annúminas",
+      "city": "Hobbiton",
+      "email": "justin.fuzzygreenstuff@gmail.com",
       "phoneNumber": "111-111-1111",
-      "isAdmin": true,
-      "id": 2
+      "isAdmin": false
     },
     {
-      "username": "weriowejo",
-      "password": "eworiwjo",
-      "email": "justin@gmail.com",
-      "isAdmin": false,
-      "city": "Almaida",
-      "phoneNumber": "555-555-5555",
-      "id": 3
+      "id": "b610c741-2183-11ef-9195-47eceacf7ccf",
+      "username": "max",
+      "password": "password",
+      "city": "Hobbiton",
+      "email": "justin.fuzzygreenstuff@gmail.com",
+      "phoneNumber": "111-111-1111",
+      "isAdmin": false
+    },
+    {
+      "id": "b610c742-2183-11ef-9195-47eceacf7ccf",
+      "username": "james",
+      "password": "password",
+      "city": "Minas Tirith",
+      "email": "james.fuzzygreenstuff@gmail.com",
+      "phoneNumber": "222-222-2222",
+      "isAdmin": true
+    },
+    {
+      "id": "b610c743-2183-11ef-9195-47eceacf7ccf",
+      "username": "sam",
+      "password": "password",
+      "city": "Hobbiton",
+      "email": "justin.fuzzygreenstuff@gmail.com",
+      "phoneNumber": "111-111-1111",
+      "isAdmin": false
+    },
+    {
+      "id": "b610c744-2183-11ef-9195-47eceacf7ccf",
+      "username": "braxton",
+      "password": "password",
+      "city": "Hobbiton",
+      "email": "justin.fuzzygreenstuff@gmail.com",
+      "phoneNumber": "111-111-1111",
+      "isAdmin": false
     }
   ]
 }
