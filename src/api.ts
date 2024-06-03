@@ -29,8 +29,9 @@ const removeUser = (id: number): Promise<TUser[]> =>
   }).then((response) => {
     if (!response.ok) {
       throw new Error(`Could not delete user ${id}`);
+    } else {
+      return response.json();
     }
-    return response.json();
   });
 
 const patchUserAdminRole = (body: Partial<TUser>): Promise<TUser[]> =>

@@ -80,7 +80,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const removeUserOpt = (id: number) => {
-    setAllUsers(allUsers.filter((user) => user.id != id));
+    setAllUsers(allUsers.filter((user) => user.id !== id));
 
     return Requests.removeUser(id).catch((e) => {
       toast.error(e);

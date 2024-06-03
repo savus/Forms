@@ -51,8 +51,48 @@ const braxton = {
   isAdmin: false,
 };
 
+const mike = {
+  id: v1(),
+  username: "mike",
+  password: "password",
+  city: "Hobbiton",
+  email: "justin.fuzzygreenstuff@gmail.com",
+  phoneNumber: "111-111-1111",
+  isAdmin: false,
+};
+
+const jason = {
+  id: v1(),
+  username: "jason",
+  password: "password",
+  city: "Hobbiton",
+  email: "justin.fuzzygreenstuff@gmail.com",
+  phoneNumber: "111-111-1111",
+  isAdmin: false,
+};
+
+const sara = {
+  id: v1(),
+  username: "sara",
+  password: "password",
+  city: "Hobbiton",
+  email: "justin.fuzzygreenstuff@gmail.com",
+  phoneNumber: "111-111-1111",
+  isAdmin: false,
+};
+
+const jennifer = {
+  id: v1(),
+  username: "jenn",
+  password: "password",
+  city: "Hobbiton",
+  email: "justin.fuzzygreenstuff@gmail.com",
+  phoneNumber: "111-111-1111",
+  isAdmin: false,
+};
+
 const dbObject = {
-  users: [justin, max, james, sam, braxton],
+  users: [justin, max, james, sam, braxton, mike, sara, jason, jennifer],
 };
 
 writeFileSync("./db.json", JSON.stringify(dbObject));
