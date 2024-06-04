@@ -1,15 +1,28 @@
-import { ReactNode, createContext, useContext, useState } from "react";
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { TUser } from "../../types";
 
 type TAuthProvider = {
-  user: TUser | null;
-  setUser: (user: TUser) => void;
+  user: Partial<TUser> | null;
+  setUser: (user: Partial<TUser>) => void;
 };
 
 const AuthContext = createContext({} as TAuthProvider);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<TUser | null>(null);
+  const [user, setUser] = useState<Partial<TUser> | null>(null);
+
+  useEffect(() => {
+    const maybeUser = localStorage.getItem("user");
+    if (maybeUser) {
+      setUser(JSON.parse(maybeUser));
+    }
+  }, []);
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       {children}

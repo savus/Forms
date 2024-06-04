@@ -1,4 +1,5 @@
 import "../css/user-information-display.css";
+import { LoginForm } from "./LoginForm";
 import { useAuth } from "./Providers/AuthProvider";
 import { useUserProvider } from "./Providers/UserProvider";
 import { UserComponent } from "./UserComponent";
@@ -16,11 +17,9 @@ export const UserInformationDisplay = () => {
           <div>
             <div>Username: {user?.username}</div>
             <div>Password: {user?.password}</div>
-            <div>Email: {user?.email}</div>
-            <div>City: {user?.city}</div>
-            <div>Phone #: {user?.phoneNumber}</div>
           </div>
         )}
+        <LoginForm />
       </div>
       <div className="registered-user-list">
         {allUsers.map((user) => (

@@ -8,6 +8,7 @@ import { isCityValid, isTextInputValidLength } from "../validations";
 import { allCities } from "../utilities/all-cities";
 import { useUserProvider } from "./Providers/UserProvider";
 import toast from "react-hot-toast";
+import { useAuth } from "./Providers/AuthProvider";
 
 const usernameErrorMessage = "Username must be more than 2 characters";
 const passwordErrorMessage = "Password must be more than 2 characters";
@@ -40,6 +41,7 @@ export const ModalComponent = ({
   const doBadInputsExist = !usernameIsValid || !passwordIsValid || !cityIsValid;
 
   const { registerNewUser } = useUserProvider();
+  const { setUser } = useAuth();
 
   const checkIfStateIsActive = (stateToCheck: TModalActiveState) =>
     stateToCheck === modalActiveState ? "active" : "";
@@ -67,6 +69,14 @@ export const ModalComponent = ({
             city: cityInput,
             phoneNumber: phoneInput.join("-"),
           })
+            .then(() => {
+              const loggedInUser = {
+                username: usernameInput,
+                password: passwordInput,
+              };
+              localStorage.setItem("user", JSON.stringify(loggedInUser));
+              setUser(loggedInUser);
+            })
             .catch((e) => {
               toast.error(e);
             })
