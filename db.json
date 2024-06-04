@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": "f0bf4320-224c-11ef-ac5f-79ad7c640529",
+      "id": "fef44c50-2261-11ef-9d3d-8fe19494e380",
       "username": "justin",
       "password": "password",
       "city": "Hobbiton",
@@ -10,7 +10,7 @@
       "isAdmin": false
     },
     {
-      "id": "f0bf4321-224c-11ef-ac5f-79ad7c640529",
+      "id": "fef44c51-2261-11ef-9d3d-8fe19494e380",
       "username": "max",
       "password": "password",
       "city": "Hobbiton",
@@ -19,7 +19,7 @@
       "isAdmin": false
     },
     {
-      "id": "f0bf4322-224c-11ef-ac5f-79ad7c640529",
+      "id": "fef44c52-2261-11ef-9d3d-8fe19494e380",
       "username": "james",
       "password": "password",
       "city": "Minas Tirith",
@@ -28,7 +28,7 @@
       "isAdmin": true
     },
     {
-      "id": "f0bf4323-224c-11ef-ac5f-79ad7c640529",
+      "id": "fef44c53-2261-11ef-9d3d-8fe19494e380",
       "username": "sam",
       "password": "password",
       "city": "Hobbiton",
@@ -37,7 +37,7 @@
       "isAdmin": false
     },
     {
-      "id": "f0bf4324-224c-11ef-ac5f-79ad7c640529",
+      "id": "fef44c54-2261-11ef-9d3d-8fe19494e380",
       "username": "braxton",
       "password": "password",
       "city": "Hobbiton",
@@ -46,7 +46,7 @@
       "isAdmin": false
     },
     {
-      "id": "f0bf4325-224c-11ef-ac5f-79ad7c640529",
+      "id": "fef44c55-2261-11ef-9d3d-8fe19494e380",
       "username": "mike",
       "password": "password",
       "city": "Hobbiton",
@@ -55,7 +55,7 @@
       "isAdmin": false
     },
     {
-      "id": "f0bf4327-224c-11ef-ac5f-79ad7c640529",
+      "id": "fef44c57-2261-11ef-9d3d-8fe19494e380",
       "username": "sara",
       "password": "password",
       "city": "Hobbiton",
@@ -64,7 +64,7 @@
       "isAdmin": false
     },
     {
-      "id": "f0bf4326-224c-11ef-ac5f-79ad7c640529",
+      "id": "fef44c56-2261-11ef-9d3d-8fe19494e380",
       "username": "jason",
       "password": "password",
       "city": "Hobbiton",
@@ -73,7 +73,7 @@
       "isAdmin": false
     },
     {
-      "id": "f0bf4328-224c-11ef-ac5f-79ad7c640529",
+      "id": "fef44c58-2261-11ef-9d3d-8fe19494e380",
       "username": "jenn",
       "password": "password",
       "city": "Hobbiton",
@@ -83,12 +83,12 @@
     },
     {
       "username": "bobby",
-      "password": "baxtone",
-      "email": "justin@gmail.com",
+      "password": "brown",
+      "email": "email@email.com",
+      "city": "Annúminas",
+      "phoneNumber": "999-999-9999",
       "isAdmin": false,
-      "city": "Brithombar",
-      "phoneNumber": "333-333-3333",
-      "id": "4OX1Xbs"
+      "id": "fi0W48T"
     }
   ]
 }

@@ -13,13 +13,13 @@ function App() {
     <>
       <MenuProvider>
         <Header />
-        <UserProvider>
+        <AuthProvider>
           <ModalComponent
             dataName="registration"
             stateToCheck="registration-form"
           />
           <UserInformationDisplay />
-        </UserProvider>
+        </AuthProvider>
       </MenuProvider>
       <datalist id="cities">
         {allCities.map((city) => (

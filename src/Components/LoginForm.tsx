@@ -2,10 +2,13 @@ import { useState } from "react";
 import { LogoutButton } from "./LogoutButton";
 import { TextInput } from "./TextInput";
 import { LoginButton } from "./LoginButton";
+import { useAuth } from "./Providers/AuthProvider";
+import toast from "react-hot-toast";
 
 export const LoginForm = () => {
   const [loginNameInput, setLoginNameInput] = useState("");
   const [loginPasswordInput, setLoginPasswordInput] = useState("");
+  const { login } = useAuth();
 
   return (
     <form
@@ -14,7 +17,11 @@ export const LoginForm = () => {
       style={{ marginTop: "40px" }}
       onSubmit={(e) => {
         e.preventDefault();
-        console.log(loginNameInput, loginPasswordInput);
+        login({ username: loginNameInput, password: loginPasswordInput }).catch(
+          (e) => {
+            toast.error(e.message);
+          }
+        );
       }}
     >
       <h3>Login</h3>

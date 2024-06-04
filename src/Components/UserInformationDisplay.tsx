@@ -1,12 +1,12 @@
 import "../css/user-information-display.css";
 import { LoginForm } from "./LoginForm";
 import { useAuth } from "./Providers/AuthProvider";
-import { useUserProvider } from "./Providers/UserProvider";
+import { useAllUsers } from "./Providers/UserProvider";
 import { UserComponent } from "./UserComponent";
 
 export const UserInformationDisplay = () => {
+  const { allUsers } = useAllUsers();
   const { user } = useAuth();
-  const { allUsers } = useUserProvider();
   return (
     <section className="user-information-display container container-lg">
       <div>

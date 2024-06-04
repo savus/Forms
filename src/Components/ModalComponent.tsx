@@ -6,7 +6,7 @@ import { PhoneInput } from "./PhoneInput";
 import { ErrorMessage } from "./ErrorMessage";
 import { isCityValid, isTextInputValidLength } from "../validations";
 import { allCities } from "../utilities/all-cities";
-import { useUserProvider } from "./Providers/UserProvider";
+import { useAllUsers } from "./Providers/UserProvider";
 import toast from "react-hot-toast";
 import { useAuth } from "./Providers/AuthProvider";
 
@@ -22,6 +22,8 @@ export const ModalComponent = ({
   stateToCheck: TModalActiveState;
 }) => {
   const { modalActiveState, setModalActiveState } = useMenus();
+  const { registerNewUser } = useAllUsers();
+  const { setUser } = useAuth();
 
   const [usernameInput, setUsernameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
@@ -39,9 +41,6 @@ export const ModalComponent = ({
   const showCityError = isSubmitted && !cityIsValid;
 
   const doBadInputsExist = !usernameIsValid || !passwordIsValid || !cityIsValid;
-
-  const { registerNewUser } = useUserProvider();
-  const { setUser } = useAuth();
 
   const checkIfStateIsActive = (stateToCheck: TModalActiveState) =>
     stateToCheck === modalActiveState ? "active" : "";
@@ -65,22 +64,20 @@ export const ModalComponent = ({
             username: usernameInput,
             password: passwordInput,
             email: emailInput,
-            isAdmin: false,
             city: cityInput,
             phoneNumber: phoneInput.join("-"),
+            isAdmin: false,
           })
             .then(() => {
-              const loggedInUser = {
-                username: usernameInput,
-                password: passwordInput,
-              };
-              localStorage.setItem("user", JSON.stringify(loggedInUser));
-              setUser(loggedInUser);
+              const user = { username: usernameInput, password: passwordInput };
+              setUser(user);
+              localStorage.setItem("user", JSON.stringify(user));
+              toast.success("Successfully registered user");
             })
-            .catch((e) => {
-              toast.error(e);
-            })
-            .finally(resetValues);
+            .catch((e) => toast.error(e))
+            .finally(() => {
+              resetValues();
+            });
         }
       }}
       onClick={(e) => {

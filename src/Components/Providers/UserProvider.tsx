@@ -8,18 +8,15 @@ import {
 import { TUser } from "../../types";
 import { Requests } from "../../api";
 import toast from "react-hot-toast";
-import { AuthProvider } from "./AuthProvider";
 
 type TUserProvider = {
   allUsers: TUser[];
-  setAllUsers: (allUsers: TUser[]) => void;
+  setAllUsers: (users: TUser[]) => void;
   isLoading: boolean;
-  setIsLoading: (isLoading: boolean) => void;
-  toggleAdminRole: (body: Partial<TUser>) => Promise<unknown>;
-  removeUser: (id: number) => Promise<unknown>;
+  setIsLoading: (loadingState: boolean) => void;
   registerNewUser: (body: Omit<TUser, "id">) => Promise<unknown>;
-  toggleAdminRoleOpt: (body: Partial<TUser>) => Promise<unknown>;
-  removeUserOpt: (id: number) => Promise<unknown>;
+  removeUser: (id: number) => Promise<unknown>;
+  updateAdminRole: (body: Partial<TUser>) => Promise<unknown>;
 };
 
 const UserContext = createContext({} as TUserProvider);
@@ -32,70 +29,36 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     setIsLoading(true);
     return Requests.getAllUsers()
       .then(setAllUsers)
-      .then(() => {
-        toast.success("Data successfully fetched");
-      })
       .catch((e) => toast.error(e))
       .finally(() => {
         setIsLoading(false);
       });
-  };
-
-  const toggleAdminRole = (body: Partial<TUser>) => {
-    setIsLoading(true);
-    return Requests.patchUserAdminRole(body)
-      .then(refetchData)
-      .then(() => {
-        toast.success("Patched successfully");
-      })
-      .catch((e) => toast.error(e))
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
-  const toggleAdminRoleOpt = (body: Partial<TUser>) => {
-    setAllUsers(
-      allUsers.map((user) =>
-        user.id === body.id ? { ...user, ...body } : user
-      )
-    );
-
-    return Requests.patchUserAdminRole(body).catch((e) => {
-      toast.error(e);
-      setAllUsers(allUsers);
-    });
   };
 
   const removeUser = (id: number) => {
     setIsLoading(true);
     return Requests.removeUser(id)
       .then(refetchData)
-      .then(() => {
-        toast.success("Successfully removed user");
-      })
       .catch((e) => toast.error(e))
       .finally(() => {
         setIsLoading(false);
       });
   };
 
-  const removeUserOpt = (id: number) => {
-    setAllUsers(allUsers.filter((user) => user.id !== id));
-
-    return Requests.removeUser(id).catch((e) => {
-      toast.error(e);
-      setAllUsers(allUsers);
-    });
+  const updateAdminRole = (body: Partial<TUser>) => {
+    setIsLoading(true);
+    return Requests.patchUser(body)
+      .then(refetchData)
+      .catch((e) => toast.error(e))
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const registerNewUser = (body: Omit<TUser, "id">) => {
-    setIsLoading(true);
-    return Requests.registerNewUser(body)
+    setIsLoading(false);
+    return Requests.postNewUser(body)
       .then(refetchData)
-      .then(() => {
-        toast.success("Successfully registered user");
-      })
       .catch((e) => toast.error(e))
       .finally(() => {
         setIsLoading(false);
@@ -113,16 +76,14 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         setAllUsers,
         isLoading,
         setIsLoading,
-        toggleAdminRole,
-        removeUser,
         registerNewUser,
-        removeUserOpt,
-        toggleAdminRoleOpt,
+        updateAdminRole,
+        removeUser,
       }}
     >
-      <AuthProvider>{children}</AuthProvider>
+      {children}
     </UserContext.Provider>
   );
 };
 
-export const useUserProvider = () => useContext(UserContext);
+export const useAllUsers = () => useContext(UserContext);
