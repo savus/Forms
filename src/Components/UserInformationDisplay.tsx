@@ -1,24 +1,24 @@
-import { useUserInformationHandler } from "./Providers/UserInformationProvider";
 import "../css/user-information-display.css";
+import { useAuth } from "./Providers/AuthProvider";
 import { useUserProvider } from "./Providers/UserProvider";
 import { UserComponent } from "./UserComponent";
 
 export const UserInformationDisplay = () => {
-  const { userInformation } = useUserInformationHandler();
+  const { user } = useAuth();
   const { allUsers } = useUserProvider();
   return (
     <section className="user-information-display container container-lg">
       <div>
         <div className="section-header">User Information</div>
-        {!userInformation ? (
+        {!user ? (
           <div>No Information given</div>
         ) : (
           <div>
-            <div>Username: {userInformation?.username}</div>
-            <div>Password: {userInformation?.password}</div>
-            <div>Email: {userInformation?.email}</div>
-            <div>City: {userInformation?.city}</div>
-            <div>Phone #: {userInformation?.phoneInput}</div>
+            <div>Username: {user?.username}</div>
+            <div>Password: {user?.password}</div>
+            <div>Email: {user?.email}</div>
+            <div>City: {user?.city}</div>
+            <div>Phone #: {user?.phoneNumber}</div>
           </div>
         )}
       </div>

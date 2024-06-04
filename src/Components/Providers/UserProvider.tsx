@@ -8,6 +8,7 @@ import {
 import { TUser } from "../../types";
 import { Requests } from "../../api";
 import toast from "react-hot-toast";
+import { AuthProvider } from "./AuthProvider";
 
 type TUserProvider = {
   allUsers: TUser[];
@@ -119,7 +120,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         toggleAdminRoleOpt,
       }}
     >
-      {children}
+      <AuthProvider>{children}</AuthProvider>
     </UserContext.Provider>
   );
 };
