@@ -14,11 +14,12 @@ function App() {
       <MenuProvider>
         <Header />
         <AuthProvider>
-          <ModalComponent
+          <></>
+          {/* <ModalComponent
             dataName="registration"
             stateToCheck="registration-form"
           />
-          <UserInformationDisplay />
+          <UserInformationDisplay /> */}
         </AuthProvider>
       </MenuProvider>
       <datalist id="cities">

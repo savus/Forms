@@ -2,6 +2,7 @@ import { TUser } from "./types";
 
 const BASE_URL = "http://localhost:3000";
 const usersEndpoint = "users";
+const favoritesEndpoint = "favorites";
 
 const getAllUsers = (): Promise<TUser[]> =>
   fetch(`${BASE_URL}/${usersEndpoint}`).then((response) => {
@@ -41,6 +42,14 @@ const patchUser = (body: Partial<TUser>): Promise<TUser[]> =>
   }).then((response) => {
     if (!response.ok) {
       throw new Error(`Could not delete user ${body.id}`);
+    }
+    return response.json();
+  });
+
+const getAllFavorites = () =>
+  fetch(`${BASE_URL}/${favoritesEndpoint}`).then((response) => {
+    if (!response.ok) {
+      throw new Error("Could not fetch favorites");
     }
     return response.json();
   });

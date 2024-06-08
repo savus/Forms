@@ -1,4 +1,11 @@
 {
+  "favorites": [
+    {
+      "id": 0,
+      "movieId": 0,
+      "userId": 0
+    }
+  ],
   "users": [
     {
       "id": "fef44c50-2261-11ef-9d3d-8fe19494e380",

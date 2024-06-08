@@ -25,3 +25,9 @@ export type TUser = {
   phoneNumber: string;
   isAdmin: boolean;
 };
+
+export type TFavorite = {
+  id: number;
+  movieId: number;
+  userId: number;
+};
